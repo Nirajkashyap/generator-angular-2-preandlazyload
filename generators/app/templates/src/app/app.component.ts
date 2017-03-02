@@ -15,9 +15,16 @@ import { AppState } from './app.service';
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: [
-    './app.component.css',
-    '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+  // styles and styleUrls both(same) will inject style tag in head for component view is general i.e encapsulation: ViewEncapsulation.None
+  // styleUrls not working for absoluate url - for node_modules
+  // require('bootstrap/dist/css/bootstrap.css') can help to include bootstrap at root Level
+  // .eof font issue will be there for loaders
+  // one can include indiviual cmp level css/less like alert.less from bootstrap less folder
+  // styleUrls: [
+  //   './app.component.css'    
+  // ],
+  styles: [
+    require('./app.component.css')    
   ],
   template: `
     <nav>

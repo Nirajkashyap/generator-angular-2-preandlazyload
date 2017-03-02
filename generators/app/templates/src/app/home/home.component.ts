@@ -14,13 +14,17 @@ import { AppState } from '../app.service';
   // We need to tell Angular's Dependency Injection which providers are in our app.
   
   // Our list of styles in our component. We may add more to compose many styles together
-  styleUrls: [ './home.component.css' ],
+  // styleUrls: [ './home.component.css' ],
+  styles: [
+    require('./home.component.css')    
+  ],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
   // Set our default values
   public localState = { value: '' };
+  public homevalue = "home";
   // TypeScript public modifiers
   constructor(
     public appState: AppState
@@ -29,12 +33,12 @@ export class HomeComponent implements OnInit {
 
   public ngOnInit() {
     console.log('hello `Home` component');
-    // this.title.getData().subscribe(data => this.data = data);
+    
   }
 
   public submitState(value: string) {
-    console.log('submitState', value);
-    this.appState.set('value', value);
-    this.localState.value = '';
+    console.log('submited value from fn argument', value);
+    console.log(this.homevalue);
+    
   }
 }

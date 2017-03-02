@@ -48,10 +48,21 @@ import { AppRoutingModule } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
 
-import '../styles/styles.scss';
-import '../styles/headings.css';
+import '../styles/index.css';
 
-//import 'jquery/dist/jquery'; // not need as we have provided in global level via wbepack
+// if using scss scss loader sample scss file are below if you are using 
+import '../styles/index.scss';
+// if you are using less loader sample less file are below
+//import '../styles/index.less'; 
+
+// if you are using bootstrap css
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+// if you are using less and want to inlcue bootsrrap less
+//import '../../node_modules/bootstrap/less/bootstrap.less';
+
+
+// import 'jquery/dist/jquery'; // not need as we have provided in global level via wbepack 
+// but it will be not avilable to browser console as include as Closures
 import 'bootstrap/dist/js/bootstrap';
 
 

@@ -166,11 +166,11 @@ module.exports = function (options) {
          * to string and less loader support for *.less files (from Angular components)
          * Returns compiled css content as string
          */
-        {
-          test: /\.less$/,
-          use: ['to-string-loader', 'css-loader', 'less-loader'],
-          exclude: [helpers.root('src', 'styles')]
-        },        
+        // {
+        //   test: /\.less$/,
+        //   use: ['to-string-loader', 'css-loader', 'less-loader'],
+        //   exclude: [helpers.root('src', 'styles')]
+        // },        
         // webpack 1
         // {
         // test: /\.less$/,

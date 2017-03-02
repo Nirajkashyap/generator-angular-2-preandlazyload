@@ -132,8 +132,11 @@ module.exports = function (options) {
             {
               loader: 'angular2-template-loader'
             },
+            // angular2-router-loader and angular-router-loader are same loader
+            // angular-router-loader is latest one do use it with some pararmeter 
+     
             {
-              loader: 'angular2-router-loader?loader=require&debug=true&aot=false&genDir=compiled&chunkName=MyChunkkkkkkk'
+              loader: 'angular-router-loader?loader=require&debug=true&aot=false&genDir=compiled&chunkName=MyChunkkkkkkk'
             }
           ],
           exclude: [/\.(spec|e2e)\.ts$/]
@@ -159,7 +162,7 @@ module.exports = function (options) {
           use: ['to-string-loader', 'css-loader'],
           exclude: [helpers.root('src', 'styles')]
         },
-
+        
         /*
          * to string and sass loader support for *.scss files (from Angular components)
          * Returns compiled css content as string

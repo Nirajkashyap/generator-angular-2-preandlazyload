@@ -77,6 +77,18 @@ module.exports = class extends Generator {
     );
 
     this.fs.copyTpl(
+      this.templatePath('_base.component.scss'),
+      this.destinationPath('./src/app/components/'+ this.props.customobject.componentname + '/' + this.props.customobject.componentname + '.component.scss'),
+      this.props.customobject
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_base.component.css'),
+      this.destinationPath('./src/app/components/'+ this.props.customobject.componentname + '/' + this.props.customobject.componentname + '.component.css'),
+      this.props.customobject
+    );
+
+    this.fs.copyTpl(
       this.templatePath('_base.component.ts'),
       this.destinationPath('./src/app/components/'+ this.props.customobject.componentname + '/' + this.props.customobject.componentname + '.component.ts'),
       this.props.customobject
@@ -85,6 +97,12 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('_base.component.spec.ts'),
       this.destinationPath('./src/app/components/'+ this.props.customobject.componentname + '/' + this.props.customobject.componentname + '.component.spec.ts'),
+      this.props.customobject
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_base.component.e2e.ts'),
+      this.destinationPath('./src/app/components/'+ this.props.customobject.componentname + '/' + this.props.customobject.componentname + '.component.e2e.ts'),
       this.props.customobject
     );
 

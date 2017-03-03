@@ -17,9 +17,9 @@ import {
   // styles and styleUrls both will inject style tag in head for component view is general i.e encapsulation: ViewEncapsulation.None
   // styleUrls not working for absoluate url - for node_modules
   
-  //styleUrls: [ './<%= componentname %>.component.less' ],
+  //styleUrls: [ './<%= componentname %>.component.css' ],
   styles: [
-    require('./<%= componentname %>.component.less')    
+    require('./<%= componentname %>.component.css')    
   ],
 
   /**

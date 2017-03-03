@@ -74,6 +74,19 @@ module.exports = class extends Generator {
     );
 
     this.fs.copyTpl(
+      this.templatePath('_base.component.scss'),
+      this.destinationPath('./src/app/pages/'+ this.props.customobject.pagename + '/' + this.props.customobject.pagename + '.component.scss'),
+      this.props.customobject
+    );
+
+        this.fs.copyTpl(
+      this.templatePath('_base.component.css'),
+      this.destinationPath('./src/app/pages/'+ this.props.customobject.pagename + '/' + this.props.customobject.pagename + '.component.css'),
+      this.props.customobject
+    );
+
+    
+    this.fs.copyTpl(
       this.templatePath('_base.component.ts'),
       this.destinationPath('./src/app/pages/'+ this.props.customobject.pagename + '/' + this.props.customobject.pagename + '.component.ts'),
       this.props.customobject
@@ -84,6 +97,12 @@ module.exports = class extends Generator {
       this.destinationPath('./src/app/pages/'+ this.props.customobject.pagename + '/' + this.props.customobject.pagename + '.component.spec.ts'),
       this.props.customobject
     );
+
+    this.fs.copyTpl(
+      this.templatePath('_base.component.e2e.ts'),
+      this.destinationPath('./src/app/pages/'+ this.props.customobject.pagename + '/' + this.props.customobject.pagename + '.component.e2e.ts'),
+      this.props.customobject
+    );    
 
 
     var someFile = "./src/app/app.module.ts";

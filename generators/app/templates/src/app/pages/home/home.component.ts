@@ -3,7 +3,7 @@ import {
   OnInit
 } from '@angular/core';
 
-
+import { AppState } from '../../app.service';
 
 @Component({
   // The selector is what angular internally uses

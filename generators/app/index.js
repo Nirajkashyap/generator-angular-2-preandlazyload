@@ -146,6 +146,10 @@ module.exports = Generator.extend({
       this.destinationPath('./src')
     );
 
+    this.fs.copy(
+      this.templatePath('./.vscode'),
+      this.destinationPath('./vscode')
+    );
 
 
   },

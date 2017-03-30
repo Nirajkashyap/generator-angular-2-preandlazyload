@@ -13,6 +13,7 @@ import { Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 // base model for route object
 import { Routeobj } from './app.routeobj';
@@ -60,8 +61,9 @@ export class AppRoutingModule {
 
   public getRoutes(): Observable<Routeobj[]> {
     console.log("res......")
-    return this.http.get('/app.routes.json')
-      .map(this.extractData);
+    return this.http.get('/assets/app.routes.json')
+      .toPromise()
+      .then(this.extractData)
       .catch(this.handleError);
   }
 

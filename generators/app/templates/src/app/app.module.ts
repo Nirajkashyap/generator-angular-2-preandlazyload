@@ -42,8 +42,6 @@ import {
   PreloadAllModules
 } from '@angular/router';
 
-import { AppRoutingModule } from './app.routes';
-
 
 // App is our top level component
 import { AppComponent } from './app.component';
@@ -65,6 +63,10 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 // but it will be not avilable to browser console as include as Closures
 import 'bootstrap/dist/js/bootstrap';
 
+import { AppRoutingModule } from './app.routes';
+
+// adding common(root level) component andadding in delcartion for Angular2
+import { headerComponent } from './components/header'
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -78,6 +80,7 @@ import 'bootstrap/dist/js/bootstrap';
   ],
   declarations: [
     AppComponent,
+    headerComponent
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

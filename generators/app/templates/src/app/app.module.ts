@@ -36,7 +36,7 @@ type StoreType = {
 };
 
 
-// Routing config 
+// Routing config
 import {
   RouterModule,
   PreloadAllModules
@@ -50,10 +50,10 @@ import { AppComponent } from './app.component';
 
 import '../styles/index.css';
 
-// if using scss scss loader sample scss file are below if you are using 
+// if using scss scss loader sample scss file are below if you are using
 import '../styles/index.scss';
 // if you are using less loader sample less file are below
-//import '../styles/index.less'; 
+//import '../styles/index.less';
 
 // if you are using bootstrap css
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -61,7 +61,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 //import '../../node_modules/bootstrap/less/bootstrap.less';
 
 
-// import 'jquery/dist/jquery'; // not need as we have provided in global level via wbepack 
+// import 'jquery/dist/jquery'; // not need as we have provided in global level via wbepack
 // but it will be not avilable to browser console as include as Closures
 import 'bootstrap/dist/js/bootstrap';
 
@@ -75,22 +75,22 @@ import 'bootstrap/dist/js/bootstrap';
     FormsModule,
     HttpModule,
     AppRoutingModule
-  ],  
+  ],
   declarations: [
-    AppComponent,   
-  ],  
+    AppComponent,
+  ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS
   ],
-  bootstrap: [ AppComponent ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 
   constructor(
     public appRef: ApplicationRef,
     public appState: AppState
-  ) {}
+  ) { }
 
   public hmrOnInit(store: StoreType) {
     if (!store || !store.state) {
@@ -118,7 +118,7 @@ export class AppModule {
     // recreate root elements
     store.disposeOldHosts = createNewHosts(cmpLocation);
     // save input values
-    store.restoreInputValues  = createInputTransfer();
+    store.restoreInputValues = createInputTransfer();
     // remove styles
     removeNgStyles();
   }

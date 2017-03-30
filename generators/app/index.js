@@ -11,54 +11,54 @@ module.exports = Generator.extend({
       'Welcome to the breathtaking ' + chalk.red('generator-angular-2-preandlazyload') + ' generator!'
     ));
 
-    var prompts = [ {
-            type: 'input',
-            name: 'name',
-            message: 'What is your project name?',
-            default: path.parse(process.cwd()).name, // Default to current folder name
-            store: true
-        },
-        {
-            type: 'input',
-            name: 'description',
-            message: 'Enter a short project description:',
-            default: '',
-            store: true
-        },
-        {
-            type: 'input',
-            name: 'version',
-            message: 'What semver version should the project start on?',
-            default: '0.0.0',
-            store: true
-        },
-        {
-            type: 'input',
-            name: 'license',
-            message: 'What license is the project distributed under?',
-            default: 'UNLICENSED',
-            store: true
-        },
-        {
-            type: 'confirm',
-            name: 'isprivate',
-            message: 'Is this a private project?',
-            default: true,
-            store: true
-        },
-        {
-            type: 'input',
-            name: 'author',
-            message: 'Who/what is the author of this project?',
-            default: '',
-            store: true
-        },
-        {
-            type: 'input',
-            name: 'username',
-            message: 'What is your github user/organisation name?',
-            store: true
-        }];
+    var prompts = [{
+      type: 'input',
+      name: 'name',
+      message: 'What is your project name?',
+      default: path.parse(process.cwd()).name, // Default to current folder name
+      store: true
+    },
+    {
+      type: 'input',
+      name: 'description',
+      message: 'Enter a short project description:',
+      default: '',
+      store: true
+    },
+    {
+      type: 'input',
+      name: 'version',
+      message: 'What semver version should the project start on?',
+      default: '0.0.0',
+      store: true
+    },
+    {
+      type: 'input',
+      name: 'license',
+      message: 'What license is the project distributed under?',
+      default: 'UNLICENSED',
+      store: true
+    },
+    {
+      type: 'confirm',
+      name: 'isprivate',
+      message: 'Is this a private project?',
+      default: true,
+      store: true
+    },
+    {
+      type: 'input',
+      name: 'author',
+      message: 'Who/what is the author of this project?',
+      default: '',
+      store: true
+    },
+    {
+      type: 'input',
+      name: 'username',
+      message: 'What is your github user/organisation name?',
+      store: true
+    }];
 
     return this.prompt(prompts).then(function (props) {
       // To access props later use this.props.someAnswer;
@@ -68,7 +68,7 @@ module.exports = Generator.extend({
 
   writing: function () {
 
-    // copy sample file 
+    // copy sample file
     this.fs.copy(
       this.templatePath('_dummyfile.txt'),
       this.destinationPath('dummyfile.txt')
@@ -81,7 +81,7 @@ module.exports = Generator.extend({
 
     this.fs.copy(
       this.templatePath('_.editorconfig'),
-      this.destinationPath('.editorconfig.txt')
+      this.destinationPath('.editorconfig')
     );
 
     this.fs.copy(
@@ -129,7 +129,7 @@ module.exports = Generator.extend({
       this.destinationPath('webpack.config.js')
     );
 
-    console.log(this.props);
+    //console.log(this.props);
     this.fs.copyTpl(
       this.templatePath('_package.json'),
       this.destinationPath('package.json'),
@@ -146,17 +146,17 @@ module.exports = Generator.extend({
       this.destinationPath('./src')
     );
 
-   
+
 
   },
 
   install: function () {
     //this.yarnInstall();
- 
+    cosnoel.log("dont use yarn for now")
     this.installDependencies({
       yarn: false,
       npm: true,
-      bower : false
+      bower: false
     });
- }
+  }
 });

@@ -59,8 +59,8 @@ module.exports = function (options) {
     entry: {
 
       'polyfills': './src/polyfills.browser.ts',
-      'main':      AOT ? './src/main.browser.aot.ts' :
-                  './src/main.browser.ts'
+      'main': AOT ? './src/main.browser.aot.ts' :
+        './src/main.browser.ts'
 
     },
 
@@ -133,8 +133,8 @@ module.exports = function (options) {
               loader: 'angular2-template-loader'
             },
             // angular2-router-loader and angular-router-loader are same loader
-            // angular-router-loader is latest one do use it with some pararmeter 
-            
+            // angular-router-loader is latest one do use it with some pararmeter
+
             {
               loader: 'angular-router-loader?loader=require&debug=true&aot=false&genDir=compiled&chunkName=MyChunkkkkkkk'
             }
@@ -162,15 +162,15 @@ module.exports = function (options) {
           use: ['to-string-loader', 'css-loader'],
           exclude: [helpers.root('src', 'styles')]
         },
-         /*
-         * to string and less loader support for *.less files (from Angular components)
-         * Returns compiled css content as string
-         */
+        /*
+        * to string and less loader support for *.less files (from Angular components)
+        * Returns compiled css content as string
+        */
         // {
         //   test: /\.less$/,
         //   use: ['to-string-loader', 'css-loader', 'less-loader'],
         //   exclude: [helpers.root('src', 'styles')]
-        // },        
+        // },
         // webpack 1
         // {
         // test: /\.less$/,
@@ -206,12 +206,12 @@ module.exports = function (options) {
           use: 'file-loader'
         },
 
-        { test: /\.(woff|woff2)$/,  loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-        { test: /\.ttf$/,    loader: "file-loader" },
-        { test: /\.eot$/,    loader: "file-loader" },
-        { test: /\.svg$/,    loader: "file-loader" }
+        { test: /\.(woff|woff2)$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+        { test: /\.ttf$/, loader: "file-loader" },
+        { test: /\.eot$/, loader: "file-loader" },
+        { test: /\.svg$/, loader: "file-loader" }
 
-        // if you are using less loader and bootstrap than for font file you may need below loader settings 
+        // if you are using less loader and bootstrap than for font file you may need below loader settings
         /*
         {
           test: /\.(eot|svg|ttf|woff|woff2)$/,
@@ -291,7 +291,7 @@ module.exports = function (options) {
        */
       new CopyWebpackPlugin([
         { from: 'src/assets', to: 'assets' },
-        { from: 'src/meta'}
+        { from: 'src/meta' }
       ]),
 
 
@@ -382,7 +382,7 @@ module.exports = function (options) {
         tsConfig: helpers.root('tsconfig.webpack.json'),
         resourceOverride: helpers.root('config/resource-override.js')
       }),
-        new webpack.ProvidePlugin({
+      new webpack.ProvidePlugin({
         jQuery: 'jquery',
         $: 'jquery',
         jquery: 'jquery'

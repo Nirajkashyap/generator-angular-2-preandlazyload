@@ -85,6 +85,11 @@ module.exports = Generator.extend({
     );
 
     this.fs.copy(
+      this.templatePath('./.vscode'),
+      this.destinationPath('./.vscode')
+    );
+
+    this.fs.copy(
       this.templatePath('_.gitattributes'),
       this.destinationPath('.gitattributes')
     );
@@ -146,17 +151,13 @@ module.exports = Generator.extend({
       this.destinationPath('./src')
     );
 
-    this.fs.copy(
-      this.templatePath('./.vscode'),
-      this.destinationPath('./vscode')
-    );
 
 
   },
 
   install: function () {
     //this.yarnInstall();
-    cosnoel.log("dont use yarn for now")
+    console.log("dont use yarn for now")
     this.installDependencies({
       yarn: false,
       npm: true,

@@ -6,11 +6,13 @@ import { CanDeactivateGuard } from './can-deactivate-guard.service';
 import { AuthGuard } from './auth-guard.service';
 import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
 
-
-
 import { HomeComponent } from './pages/home';
 
+
+//ROUTE genenration importsyntax
+
 const appRoutes: Routes = [
+//ROUTE genenration pathsyntax
   {
     path: '',
     component: HomeComponent

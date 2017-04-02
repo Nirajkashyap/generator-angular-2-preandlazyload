@@ -48,25 +48,45 @@ import { AppComponent } from './app.component';
 
 import '../styles/index.css';
 
+<% if (scss) { %>
 // if using scss scss loader sample scss file are below if you are using
 import '../styles/index.scss';
+<% } else { %>
+<% } %>
+<% if (less) { %>
 // if you are using less loader sample less file are below
-//import '../styles/index.less';
+import '../styles/index.less';
+<% } else { %>
+<% } %>
 
-// if you are using bootstrap css
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-// if you are using less and want to inlcue bootsrrap less
-//import '../../node_modules/bootstrap/less/bootstrap.less';
-
-
+<% if (bootstrap) { %>
 // import 'jquery/dist/jquery'; // not need as we have provided in global level via wbepack
 // but it will be not avilable to browser console as include as Closures
 import 'bootstrap/dist/js/bootstrap';
+<% if (scss) { %>
+
+//import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+<% } else { %>
+    <% if (less) { %>
+//import '../../node_modules/bootstrap/less/bootstrap.less';
+    <% } else { %>
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+    <% } %>
+<% } %>
+
+<% } else { %>
+
+<% } %>
+
 
 import { AppRoutingModule } from './app.routes';
 
 // adding common(root level) component andadding in delcartion for Angular2
 import { headerComponent } from './components/header'
+//CMP-level component from generator
+
+
+//PAGE-level component from generator
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -80,6 +100,10 @@ import { headerComponent } from './components/header'
   ],
   declarations: [
     AppComponent,
+
+    //CMP-level component_declaration from generator
+    //PAGE-level component_declaration from generator
+    //root level component
     headerComponent
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

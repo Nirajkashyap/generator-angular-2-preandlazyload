@@ -3,14 +3,13 @@ import {
   OnInit
 } from '@angular/core';
 
-import { AppState } from '../../app.service';
 import { HomeService } from './home.service';
 
 @Component({
   // The selector is what angular internally uses
   // for `document.querySelectorAll(selector)` in our index.html
   // where, in this case, selector is the string 'home'
-  selector: 'nghome',  // <nghome></nghome>
+  selector: 'nglazyhome',  // <nghome></nghome>
   // We need to tell Angular's Dependency Injection which providers are in our app.
 
   // Our list of styles in our component. We may add more to compose many styles together
@@ -22,7 +21,7 @@ import { HomeService } from './home.service';
   templateUrl: './home.component.html',
   providers: [HomeService]
 })
-export class HomeComponent implements OnInit {
+export class ProtectedLazyHomeComponent implements OnInit {
   // Set our default values
   public localState = { value: '' };
   public homevalue = 'home';
@@ -30,7 +29,7 @@ export class HomeComponent implements OnInit {
   public errorMessage
   // TypeScript public modifiers
   constructor(
-    public _appState: AppState,
+    
     public homeService: HomeService
 
   ) { }

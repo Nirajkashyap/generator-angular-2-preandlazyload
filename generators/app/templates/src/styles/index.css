@@ -1,0 +1,10 @@
+
+<% if (bootstrap) { %>
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+<% } else { %>
+
+<% } %>
+body {
+  min-height: 2000px;
+  padding-top: 70px;
+}

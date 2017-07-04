@@ -1,16 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import {
-  NgModule,
-  ApplicationRef
-} from '@angular/core';
-import {
-  removeNgStyles,
-  createNewHosts,
-  createInputTransfer
-} from '@angularclass/hmr';
-
+import {  NgModule,  ApplicationRef} from '@angular/core';
+import {  removeNgStyles,  createNewHosts,  createInputTransfer} from '@angularclass/hmr';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -35,51 +26,49 @@ type StoreType = {
   disposeOldHosts: () => void
 };
 
+// brodcaster 
+import { AppBroadcaster } from './app.broadcaster';
 
-// Routing config
-import {
-  RouterModule,
-  PreloadAllModules
-} from '@angular/router';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+export function createTranslateLoader(http: Http) {
+  let url = 'http://' + window.location.host + '/assets/i18n/';
+  console.log(url);
+  return new TranslateHttpLoader(http, url);
+}
 
 // App is our top level component
 import { AppComponent } from './app.component';
 
-import '../styles/index.css';
-
-<% if (scss) { %>
 // if using scss scss loader sample scss file are below if you are using
 import '../styles/index.scss';
-<% } else { %>
-<% } %>
-<% if (less) { %>
+
+import '../styles/index.css';
 // if you are using less loader sample less file are below
-import '../styles/index.less';
-<% } else { %>
-<% } %>
+// import '../styles/index.less';
 
 <% if (bootstrap) { %>
-// import 'jquery/dist/jquery'; // not need as we have provided in global level via wbepack
-// but it will be not avilable to browser console as include as Closures
+
 import 'bootstrap/dist/js/bootstrap';
-<% if (scss) { %>
-
-//import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-<% } else { %>
-    <% if (less) { %>
-//import '../../node_modules/bootstrap/less/bootstrap.less';
-    <% } else { %>
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-    <% } %>
-<% } %>
 
 <% } else { %>
 
 <% } %>
 
 
-import { AppRoutingModule } from './app.routes';
+import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
+import { AppHttpInterceptor } from './app.interceptor';
+// Routing config
+import { RouterModule, Routes, Router,PreloadAllModules} from '@angular/router';
+
+
+import { AuthService } from './auth.service';
+import { CanDeactivateGuard } from './can-deactivate-guard.service';
+import { CanActivateGuard } from './can-activate-guard.service';
+import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
+
+// import { AppRoutingModule } from './app.routes';
 
 // adding common(root level) component andadding in delcartion for Angular2
 import { headerComponent } from './components/header'
@@ -87,7 +76,50 @@ import { headerComponent } from './components/header'
 
 
 //PAGE-level component from generator
+import { HomeComponent } from './pages/home';
 
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'hreos/123',
+    canDeactivate: [CanDeactivateGuard],
+    canActivate: [CanActivateGuard],
+    component: headerComponent    
+  },
+  {
+    path: 'prelazy',
+    // canDeactivate: [CanDeactivateGuard],
+    // canActivate: [CanActivateGuard],
+    loadChildren: './modules/prelazy/index#PreLazyModule',
+    data: { preload: true },
+    // canLoad: [CanActivateGuard], // this will override preloadingStrategy
+  },
+  {
+    path: 'lazy',
+    // canDeactivate: [CanDeactivateGuard],
+    // canActivate: [CanActivateGuard],
+    loadChildren: './modules/lazy/index#LazyModule',
+    data: { preload: false },
+    // canLoad: [CanActivateGuard], // this will override preloadingStrategy
+  },
+   {
+    path: 'protectedlazy',
+    // canDeactivate: [CanDeactivateGuard],
+    // canActivate: [CanActivateGuard],
+    loadChildren: './modules/protectedlazy/index#ProtectedLazyModule',
+    data: { preload: false },
+    canLoad: [CanActivateGuard], // this will override preloadingStrategy 
+  },
+//ROUTE genenration pathsyntax
+  {
+  path: '**',  
+  redirectTo : ''
+  }
+];
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
@@ -96,19 +128,45 @@ import { headerComponent } from './components/header'
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    //AppRoutingModule
+    RouterModule.forRoot(
+      appRoutes,
+      { useHash: true,preloadingStrategy: SelectivePreloadingStrategy }
+    ),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
+      }
+    })
   ],
   declarations: [
     AppComponent,
-
     //CMP-level component_declaration from generator
+    HomeComponent,
     //PAGE-level component_declaration from generator
     //root level component
     headerComponent
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    AppBroadcaster,
+    // AppRoutingModule providers
+    AuthService,
+    CanDeactivateGuard,
+    CanActivateGuard,
+    SelectivePreloadingStrategy,
+    {
+      provide: Http,
+      useFactory:
+      (backend: XHRBackend, defaultOptions: RequestOptions, router) => {
+        //console.log(router);
+        return new AppHttpInterceptor(backend, defaultOptions, router);
+      },
+      deps: [XHRBackend, RequestOptions, Router]
+    }
   ],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,31 @@
+/*styles for header content only*/
+
+
+/*
+Extra small devices
+Portrait phones (<544px)
+*/
+
+//Landscape phones (≥544px - <768px)
+@media (min-width: 544px) and (max-width: 768px) {}
+
+// Medium devices Tablets (≥768px - <992px)
+@media (min-width: 768px) and (max-width: 992px) {}
+
+// iPad 1 and 2  Portrait
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {}
+
+// iPad 1 and 2  Landscape
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {}
+
+// iPad 3 and 4 Portrait
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {}
+
+// iPad 3 and 4 Landscape
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {}
+
+//Large devices Desktops (≥992px - <1200px)
+@media (min-width: 992px) and (max-width: 1200px) {}
+
+// Extra large devices Desktops (≥1200px)
+@media (min-width: 1200px) {}

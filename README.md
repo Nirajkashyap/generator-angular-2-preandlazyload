@@ -15,6 +15,25 @@ Then generate your new project:
 ```bash
 yo angular-2-preandlazyload
 ```
+this will create base structure like [AngularClass](https://github.com/AngularClass/angular-starter) 
+
+integration 
+1. angular http interceptor
+2. i18n from @ngx-translate/core and @biesbjerg/ngx-translate-extract
+3. sample for pre/lazy loaded moudles and route 
+4. sample for auth-gaurd service
+
+sub generator
+
+```bash
+yo angular-2-preandlazyload:component 
+```
+
+```bash
+yo angular-2-preandlazyload:page
+-optional service integration
+```
+
 
 ## Getting To Know Yeoman
 

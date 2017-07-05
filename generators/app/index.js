@@ -89,7 +89,7 @@ module.exports = Generator.extend({
       },
       {
         when: function (prompts) {
-        console.log(prompts);
+        // console.log(prompts);
         prompts.bootstrap = false;
         return prompts.jquery;
         },
@@ -200,7 +200,7 @@ module.exports = Generator.extend({
       this.templatePath('./src'),
       this.destinationPath('./src')
     );
-    console.log(this.props);
+    // console.log(this.props);
     this.fs.copyTpl(
       this.templatePath('./src/app/app.module.ts'),
       this.destinationPath('./src/app/app.module.ts'),
@@ -224,21 +224,13 @@ module.exports = Generator.extend({
   },
 
   install: function () {
-    //this.yarnInstall();
-    console.log("dont use yarn for now")
-    // this.installDependencies({
-    //   yarn: true,
-    //   npm: false,
-    //   bower: false
-    // });
+    // this.yarnInstall();
+    
+    this.installDependencies({
+      yarn: true,
+      npm: false,
+      bower: false
+    });
   }
 });
 
-// to do 
-// component input ask - > ngonchge bind
-// implement all life cycle events(expect who is  triigerd automatically) just skipt ngonchge
-// interceptors 
-// http  service
-// brodcast bus 
-// http singletone as provider - as 
-//  

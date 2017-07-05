@@ -51,6 +51,7 @@ import 'bootstrap/dist/js/bootstrap';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 import { AppHttpInterceptor } from './app.interceptor';
 
+import { TranslateService } from '@ngx-translate/core';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -153,6 +154,7 @@ const appRoutes: Routes = [
     ENV_PROVIDERS,
     APP_PROVIDERS,
     AppBroadcaster,
+    TranslateService,
     // AppRoutingModule providers
     AuthService,
     CanDeactivateGuard,
@@ -174,8 +176,14 @@ export class AppModule {
 
   constructor(
     public appRef: ApplicationRef,
-    public appState: AppState
-  ) { }
+    public appState: AppState,
+    public translate: TranslateService
+  ) { 
+     
+     translate.setDefaultLang('en');
+     // translate.use('en');
+     translate.use('ru');
+  }
 
   public hmrOnInit(store: StoreType) {
     if (!store || !store.state) {

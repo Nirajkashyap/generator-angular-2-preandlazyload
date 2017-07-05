@@ -29,15 +29,6 @@ type StoreType = {
 // brodcaster 
 import { AppBroadcaster } from './app.broadcaster';
 
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-export function createTranslateLoader(http: Http) {
-  let url = 'http://' + window.location.host + '/assets/i18n/';
-  console.log(url);
-  return new TranslateHttpLoader(http, url);
-}
-
 // App is our top level component
 import { AppComponent } from './app.component';
 
@@ -59,6 +50,15 @@ import 'bootstrap/dist/js/bootstrap';
 
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 import { AppHttpInterceptor } from './app.interceptor';
+
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function createTranslateLoader(http: Http) {
+  let url = 'http://' + window.location.host + '/assets/i18n/';
+  console.log(url);
+  return new TranslateHttpLoader(http, url);
+}
 // Routing config
 import { RouterModule, Routes, Router,PreloadAllModules} from '@angular/router';
 

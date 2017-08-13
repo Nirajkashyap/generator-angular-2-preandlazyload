@@ -9,7 +9,7 @@ import {
    * for `document.querySelectorAll(selector)` in our index.html
    * where, in this case, selector is the string 'header'
    */
-  selector: '<%= componentname %>',
+  selector: 'ng<%= componentname %>',
 
   /**
    * Our list of styles in our component. We may add more to compose many styles together

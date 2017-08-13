@@ -3,13 +3,18 @@ import {
   OnInit
 } from '@angular/core';
 
+<% if (pageservice) { %>
+import { <%= pagename %>Service } from './<%= pagename %>.service';
+<% } else { %>
+<% } %>
+
 @Component({
   /**
    * The selector is what angular internally uses
    * for `document.querySelectorAll(selector)` in our index.html
    * where, in this case, selector is the string 'header'
    */
-  selector: '<%= pagename %>',
+  selector: 'ng<%= pagename %>',
 
   /**
    * Our list of styles in our component. We may add more to compose many styles together
@@ -26,11 +31,14 @@ import {
   /**
    * Every Angular template is first compiled by the browser before Angular runs it's compiler
    */
-  templateUrl: './<%= pagename %>.component.html'
+  templateUrl: './<%= pagename %>.component.html'<% if (pageservice) { %>,
+  providers: [<%= pagename %>Service]
+  <% } else { %>
+<% } %>
 })
 export class <%= pagename %>Component implements OnInit {
 
-  constructor() {}
+  constructor(<% if (pageservice) { %>  private <%= pagename %>Service : <%= pagename %>Service  <% } else { %> <% } %>) {}
 
   public ngOnInit() {
     console.log('hello `<%= pagename %>` component');

@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-2-preandlazyload",
-  "version": "0.0.0",
+  "version": "1.1.0",
   "description": "",
   "homepage": "",
   "author": {
@@ -13,7 +13,14 @@
   ],
   "main": "generators/index.js",
   "keywords": [
-    "",
+    "angular2",
+    "typescript",    
+    "webpack",
+    "angular2 webpack starter",
+    "angular2 yeoman",
+    "angular2 yeoman generator",
+    "angular2-generator",
+    "Angular2-generator",
     "yeoman-generator"
   ],
   "dependencies": {

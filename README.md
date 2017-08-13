@@ -14,6 +14,8 @@ Then generate your new project:
 
 ```bash
 yo angular-2-preandlazyload
+yo angular-2-preandlazyload:component
+yo angular-2-preandlazyload:page
 ```
 this will create base structure like [AngularClass](https://github.com/AngularClass/angular-starter) 
 

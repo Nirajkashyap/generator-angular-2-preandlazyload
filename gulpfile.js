@@ -12,7 +12,7 @@ var coveralls = require('gulp-coveralls');
 gulp.task('static', function () {
   return gulp.src('**/*.js')
     .pipe(excludeGitignore())
-    .pipe(eslint())
+    //.pipe(eslint({baseConfig: {extends: 'eslint:recommended'}}))
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
 });
@@ -31,7 +31,7 @@ gulp.task('pre-test', function () {
 });
 
 gulp.task('test', ['pre-test'], function (cb) {
-  var mochaErr;
+   var mochaErr;
 
   gulp.src('test/**/*.js')
     .pipe(plumber())
@@ -42,7 +42,7 @@ gulp.task('test', ['pre-test'], function (cb) {
     .pipe(istanbul.writeReports())
     .on('end', function () {
       cb(mochaErr);
-    });
+    });    
 });
 
 gulp.task('watch', function () {
@@ -50,7 +50,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('coveralls', ['test'], function () {
-  if (!process.env.CI) {
+    if (!process.env.CI) {
     return;
   }
 
